@@ -1,0 +1,114 @@
+<!--sidebar-->
+<c-sidebar #sidebar="cSidebar" class="d-print-none sidebar sidebar-fixed" id="sidebar" visible>
+  <c-sidebar-brand style="background: #193f7d" (click)="clickLogo()" [brandFull]="{
+      src: urlLogo,
+      height: 46,
+      alt: 'SAVIS eArchive'
+    }" routerLink="./dashboard">
+  </c-sidebar-brand>
+  <perfect-scrollbar style="background-color: #193f7d" [config]="perfectScrollbarConfig">
+    <c-sidebar-nav>
+      <ul class="sidebar-nav">
+        <li class="nav-item">
+          <a class="nav-link" style="padding: 0 13px">
+            <i class="fa fa-search" style="
+                font-size: 15px;
+                margin-left: 200px;
+                position: absolute;
+                color: rgba(255, 255, 255, 0.6);
+              "></i>
+            <input type="text" (keyup)="searchNav($event)" class="form-control" style="
+                color: rgba(255, 255, 255, 0.6) !important;
+                background-color: rgba(255, 255, 255, 0.5);
+                outline: none;
+                border: none;
+                font-size: 15px;
+                box-shadow: none;
+              " [placeholder]="translate.instant('SEARCH')" />
+          </a>
+        </li>
+        <li class="nav-item" *ngFor="let item of navItems; index as i">
+          <a class="nav-link" style="width: 100%; float: left" (click)="GetnavChildren(item, i)">
+            <span style="min-width: 45px">
+              <i [class]="item.IconClass" style="font-size: 20px"></i>
+            </span>
+            <span *ngIf="ulti.isNullOrEmpty(item.UrlRewrite)" style="width: 165px; margin-left: 5px">
+              {{ isVN ? item.NavigationName : item.NavigationNameEN }}
+            </span>
+            <span *ngIf="!ulti.isNullOrEmpty(item.UrlRewrite)" style="width: 165px; margin-left: 5px"
+              [routerLink]="[item.UrlRewrite]">
+              {{ isVN ? item.NavigationName : item.NavigationNameEN }}
+            </span>
+            <i *ngIf="!item.active && item?.SubNavigation?.length > 0" class="fa fa-chevron-up"
+              style="font-size: 11px"></i>
+            <i *ngIf="item.active && item?.SubNavigation?.length > 0" class="fa fa-chevron-down"
+              style="font-size: 11px"></i>
+          </a>
+          <ng-container *ngIf="item?.SubNavigation?.length > 0 && item.active">
+            <ul class="nav-group" style="list-style-type: none; padding: 0px; margin-top: 50px">
+              <li class="nav-item" [ngClass]="{ acive: child.acive }"
+                *ngFor="let child of item.SubNavigation; index as j" (click)="selectNavChilrent(child, i, j, null, false)">
+                <a class="nav-link"  style="padding-left: 30px">
+                  <span style="min-width: 45px">
+                    <i [class]="child.IconClass" style="font-size: medium; margin-right: 28px"></i>
+                  </span>
+                  <span *ngIf="ulti.isNullOrEmpty(child.UrlRewrite)" style="width: 165px; margin-left: 5px">
+                    {{ isVN ? child.NavigationName : child.NavigationNameEN }}
+                  </span>
+                  <span *ngIf="!ulti.isNullOrEmpty(child.UrlRewrite)" style="width: 165px; margin-left: 5px" [routerLink]="[child.UrlRewrite]">
+                    {{ isVN ? child.NavigationName : child.NavigationNameEN }}
+                  </span>
+                  <i *ngIf="!child.active && child?.SubNavigation?.length > 0" class="fa fa-chevron-up"
+                    style="font-size: 11px"></i>
+                  <i *ngIf="child.active && child?.SubNavigation?.length > 0" class="fa fa-chevron-down"
+                    style="font-size: 11px"></i>
+                </a>
+                <ng-container *ngIf="child?.SubNavigation?.length > 0  && child.active">
+                  <ul class="nav-group" style="list-style-type: none; padding: 0px; margin-left: 30px">
+                    <li class="nav-item" [ngClass]="{ acive: children.acive }"
+                      *ngFor="let children of child.SubNavigation; index as k"
+                      (click)="selectNavChilrent(children, i, j, k, false)">
+                      <a class="nav-link" [routerLink]="[children.UrlRewrite]" style="padding-left: 30px">
+                        <span style="min-width: 45px">
+                          <i [class]="children.IconClass" style="font-size: medium; margin-right: 28px"></i>
+                        </span>
+                        <span style="width: 165px; margin-left: 5px">
+                          {{ isVN ? children.NavigationName : children.NavigationNameEN }}
+                        </span>
+                      </a>
+                    </li>
+                  </ul>
+                </ng-container>
+              </li>
+            </ul>
+          </ng-container>
+        </li>
+      </ul>
+    </c-sidebar-nav>
+  </perfect-scrollbar>
+  <!-- <c-sidebar-toggler
+    *ngIf="!sidebar.narrow"
+    toggle="unfoldable"
+    cSidebarToggle="sidebar"
+  ></c-sidebar-toggler> -->
+</c-sidebar>
+
+<div style="overflow: hidden !important" class="wrapper d-flex flex-column min-vh-100 bg-light dark:bg-transparent">
+  <app-default-header style="
+      box-shadow: 5px 5px 10px rgb(0 0 0 / 25%);
+      display: inline;
+      padding: 0;
+    " class="mb-4 d-print-none header header-sticky" position="toast" sidebarId="sidebar"
+    (outshowPopup)="getShowpopup($event)" [hidePopup]="showPopup" [RouterParent]="RouParent"
+    [RouterChilrent]="RouChilrent">
+  </app-default-header>
+  <div (click)="hideNotification()" class="body flex-grow-1 px-3" style="margin-top: 20px">
+    <c-container breakpoint="2xl" class="h-auto">
+      <router-outlet></router-outlet>
+      <ngx-loading [show]="isLoading" [config]="{ backdropBorderRadius: '3px' }">
+      </ngx-loading>
+      <notifier-container style="float: right"></notifier-container>
+    </c-container>
+  </div>
+  <app-default-footer></app-default-footer>
+</div>

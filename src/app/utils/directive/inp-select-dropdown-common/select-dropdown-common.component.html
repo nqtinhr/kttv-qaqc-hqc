@@ -1,0 +1,24 @@
+<div class="select-common" (mouseleave)="showDropDown = false && outSelectValue($event)">
+    <div class="form-input">
+        <input type="text"
+        [placeholder]="translate.instant(nameInput)"
+        class="drop-toggle btn flat inp-select-focus"
+        (keyup)="onKeyDownEvent($event)"
+        (click)="showDropDown=!showDropDown"
+        [ngClass]="{'selectactive': showDropDown}" 
+        [(ngModel)]="itemText" >
+        <i *ngIf ="!showDropDown" class="fa fa-chevron-down"></i>
+        <i *ngIf ="showDropDown" class="fa fa-chevron-up"></i>
+    </div>
+    <div class="drop-show"  [ngClass]="{'scroll-box scrollbar': lstItem?.length >=6, 'selectactive': showDropDown}" [class]="Height" >
+        <div>
+        </div>
+        <div *ngFor="let it of lstItem; index as i" >
+            <div>
+                <button  [title]="it.Name" (click)="selected(it)" (keydown)="onActionEvent($event, it)"  [ngClass]="{'selectactive': it.active, 'focus': it.focus}">
+                    {{it.Name}} 
+                  </button> 
+            </div>
+        </div>
+    </div>
+  </div>

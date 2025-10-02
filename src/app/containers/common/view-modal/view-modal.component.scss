@@ -1,0 +1,50 @@
+@import "../../../../scss/main.scss";
+
+:host{
+    ::ng-deep{
+        .required-input{
+            color: #f86c6b
+        }
+    }
+    .modal-md{
+        max-width: 600px;
+    }
+}
+.white{
+    color: white;
+}
+
+.btn:nth-child(1){
+    color: #667080;
+    background: white;
+    border-radius: 4px;
+    border: solid 1px #919AA9;
+}
+
+.btn:nth-child(1):hover {
+    background: gray;
+    color: white;
+}
+
+.btn:nth-child(2){
+    background: #4C7DE7;
+    border-radius: 4px;
+    border: solid 1px #4C7DE7;
+}
+
+.btn:nth-child(2):hover {
+    background: #13398D;
+}
+.btn:nth-child(3){
+  background: #4C7DE7;
+  border-radius: 4px;
+  border: solid 1px #4C7DE7;
+}
+
+.btn:nth-child(3):hover {
+  background: #13398D;
+}
+.modal-header, .close {
+    background-color: $color-main;
+    color: $color-white;
+}

@@ -1,0 +1,268 @@
+<!--MENU-->
+<ng-container>
+  <c-container style="background-color: #193f7d; min-height: 4rem" [fluid]="true">
+    <div class="col-md-10">
+      <button toggle="visible" cHeaderToggler [cSidebarToggle]="sidebarId" class="ps-1">
+        <svg [cIcon]="icon.cilHamburgerMenu" size="lg" title="List Icon" style="color: white;"></svg>
+      </button>
+      <c-header-nav (click)="onBlurMethod()" class="d-none d-lg-flex me-auto">
+        <!-- <c-nav-item class="logo mar-right-15">
+          <img [src]="urlLogo" alt="VPTW" class="header-logo" (click)="RedirectHomePage()" />
+        </c-nav-item> -->
+        <!-- <swiper id="swiperSlideparent" style="height: 50px;" [slidesPerView]="slidesPerViewParent" [spaceBetween]="0" [navigation]="true">
+          <ng-template  swiperSlide *ngFor="let item of navItems; index as i">
+            <div  class="link-c1" [ngClass]="{ active: item.active }" (click)="GetnavChildren(item, i)"
+              (click)="Setbreadcrumb(navc1, null, null)">
+              <a>
+                <span *ngIf="ulti.isNullOrEmpty(item.UrlRewrite)">
+                  {{ isVN ? item.NavigationName : item.NavigationNameEN }}
+                </span>
+                <span *ngIf="!ulti.isNullOrEmpty(item.UrlRewrite)" [routerLink]="[item.UrlRewrite]">
+                  {{ isVN ? item.NavigationName : item.NavigationNameEN }}
+                </span>
+              </a>
+            </div>
+          </ng-template>
+        </swiper> -->
+        <!-- <div *ngFor="let item of navItems; index as i">
+          <div class="link-c1" [ngClass]="{ active: item.active }" (click)="GetnavChildren(item, i)"
+            (click)="Setbreadcrumb(navc1, null, null)">
+            <a>
+              <span *ngIf="ulti.isNullOrEmpty(item.UrlRewrite)">
+                {{ isVN ? item.NavigationName : item.NavigationNameEN }}
+              </span>
+              <span *ngIf="!ulti.isNullOrEmpty(item.UrlRewrite)" [routerLink]="[item.UrlRewrite]">
+                {{ isVN ? item.NavigationName : item.NavigationNameEN }}
+              </span>
+            </a>
+          </div>
+        </div> -->
+      </c-header-nav>
+    </div>
+    <div class="col-md-2">
+      <c-header-nav style="float: right">
+        <button style="background-color: #193f7d; border: none" (click)="showMe('popup')" type="button" id="btn"
+          value="submit">
+          <div class="notification">
+            <div class="notBtn">
+              <div class="number">
+                {{ totalNotView < 99 ? totalNotView : "99+" }} </div>
+                  <i class="fas fa fa-bell-o"></i>
+              </div>
+            </div>
+        </button>
+        <div class="notification">
+          <div class="notBtn" *ngIf="showPopup && currentIndex == 'popup'" [id]="'popup'">
+            <div class="box">
+              <div class="nothing">
+                <div class="cent">{{ "NOTIFICATION" | translate }}</div>
+                <a class="sent" (click)="isViewAllNotification()">
+                  <div class="fa fa-check"></div>
+                  {{ "ALL_READ" | translate }}
+                </a>
+              </div>
+              <perfect-scrollbar [config]="scrollYConfig" class="perfecScrol" style="height: 89%">
+                <div class="col-md-12">
+                  <div class="display">
+                    <div class="cont">
+                      <div class="secnew" (click)="isViewNotification(item)" *ngFor="let item of lstNotification"
+                        [class]="item.isView == false ? 'secnew' : 'sec'">
+                        <a>
+                          <div class="profCont">
+                            <img class="profile" src="../../../../assets/images/avatars/imgFileNotifi.png" />
+                          </div>
+                          <div class="txt">{{ item.Name }}</div>
+                          <div class="dot"></div>
+                          <div class="txtby" [title]=item.UserName>
+                            {{ "BY" | translate }} {{ item.UserName.length > 10 ? (item.UserName | slice:0:10) +
+                            '...':(item.UserName) | translate }}
+                          </div>
+                          <div class="txt sub">
+                            <a style="color: #000000; line-height: 18px" [title]=item.Content>{{item.Content.length > 50
+                              ?(item.Content |
+                              slice:0:50) + '...':(item.Content)}}</a>
+                          </div>
+                          <div class="txt sub color" style="float: right">
+                            <i>{{
+                              item.CreatedOnDate | date : "dd/MM/yyy HH:mm"
+                              }}</i>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </perfect-scrollbar>
+              <div class="nothingtwo">
+                <div class="btnall">
+                  <a href="/notification" style="text-decoration: none; margin-bottom: -30px">{{ "SEE_ALL" | translate
+                    }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <c-header-nav class="ms-3 contain_avtatar">
+          <c-nav-item>
+            <span class="username username-hide-on-mobile ng-binding">
+              {{ FullName }}
+            </span>
+          </c-nav-item>
+          <ng-container *ngTemplateOutlet="userDropdown"></ng-container>
+        </c-header-nav>
+      </c-header-nav>
+    </div>
+  </c-container>
+</ng-container>
+
+<!--MENU C2-->
+<!-- <ng-containe (click)="onBlurMethod()" *ngIf="navChildItems.length > 0">
+  <c-container style="border-bottom: 1px solid #d8dbe0" [fluid]="true">
+    <c-header-nav>
+      <swiper id="swiperSlidChild" style="height: 50px; overflow: unset" [slidesPerView]="slidesPerView" [spaceBetween]="0"
+        [navigation]="true">
+        <ng-template swiperSlide *ngFor="let item of navChildItems; index as i">
+          <div class="link-c2" [ngClass]="{ 'nav-c2': item.active }">
+            <div *ngIf="ulti.isNullOrEmpty(item.UrlRewrite)">
+              <a>
+                <span>
+                  {{ isVN ? item.NavigationName : item.NavigationNameEN }}
+                </span>
+              </a>
+              <i *ngIf="item.SubNavigation.length > 0" class="fa fa-sort-desc" style="color: #193f7d"></i>
+            </div>
+            <div *ngIf="!ulti.isNullOrEmpty(item.UrlRewrite)" (click)="SetActiveNavC3(i, -1)"
+              (click)="SetActiveNavC2(i)" (click)="Setbreadcrumb(navc1, item, null)" [routerLink]="[item.UrlRewrite]">
+              <a [routerLink]="[item.UrlRewrite]">
+                <span>
+                  {{ isVN ? item.NavigationName : item.NavigationNameEN }}
+                </span>
+              </a>
+              <i *ngIf="item.SubNavigation.length > 0" class="fa fa-sort-desc" style="color: #193f7d"></i>
+            </div>
+            <div class="nav-c3" *ngIf="item.SubNavigation.length > 0">
+              <div *ngFor="let it of item.SubNavigation; index as l">
+                <div class="retangle"></div>
+                <div *ngIf="ulti.isNullOrEmpty(it.UrlRewrite)" class="row" (click)="SetActiveNavC3(i, l)"
+                  (click)="SetActiveNavC2(i)">
+                  <div (click)="Setbreadcrumb(navc1, item, it)" [ngClass]="{
+                      'border-row': item.SubNavigation.length - 1 != l,
+                      'no-border-row': item.SubNavigation.length - 1 == l
+                    }">
+                    <a [ngClass]="{ 'nav-c3-active': it.active }">
+                      <span>
+                        {{ isVN ? it.NavigationName : it.NavigationNameEN }}
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                <div *ngIf="!ulti.isNullOrEmpty(it.UrlRewrite)" class="row" [routerLink]="[it.UrlRewrite]"
+                  (click)="SetActiveNavC3(i, l)" (click)="Setbreadcrumb(navc1, item, it)">
+                  <div [ngClass]="{
+                      'border-row': item.SubNavigation.length - 1 != l,
+                      'no-border-row': item.SubNavigation.length - 1 == l
+                    }" (click)="SetActiveNavC2(i)">
+                    <a [ngClass]="{ 'nav-c3-active': it.active }" [routerLink]="[it.UrlRewrite]">
+                      <span>
+                        {{ isVN ? it.NavigationName : it.NavigationNameEN }}
+                      </span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </swiper>
+    </c-header-nav>
+  </c-container>
+</ng-containe> -->
+<ng-template (click)="onBlurMethod()" #userDropdown>
+  <c-dropdown alignment="end" variant="nav-item">
+    <button cButton color="" [caret]="false" cDropdownToggle class="py-0">
+      <c-avatar cTextColor="primary" shape="rounded-1" size="md" style="margin-top: 6px"
+        src="./assets/img/avatars/user.png" status="success">
+      </c-avatar>
+    </button>
+    <ul cDropdownMenu class="pt-0 pr-5 w-auto">
+      <li>
+        <span cDropdownHeader class="fw-semibold py-2" style="float: left">{{
+          "LANGUAGE" | translate
+          }}</span>
+        <img *ngIf="isVN" src="./assets/img/avatars/Icon_VN.png" style="margin-top: 10px" height="18px" width="30px" />
+        <img *ngIf="!isVN" src="./assets/img/avatars/Icon_EN.jpg" style="margin-top: 10px" height="18px" width="30px" />
+      </li>
+      <li>
+        <a href="javascript:void(0);" (click)="switchLanguage('vi')" cDropdownItem>
+          <img src="./assets/img/avatars/Icon_VN.png" height="15px" width="15px" />
+          <span> Tiếng Việt </span>
+        </a>
+      </li>
+      <li>
+        <a class="dropdown-item no-active-menu" [ngClass]="{ active: languageUse == 'en' }" href="javascript:void(0);"
+          (click)="switchLanguage('en')" cDropdownItem>
+          <img src="./assets/img/avatars/Icon_EN.jpg" height="15px" width="15px" />
+          <span> English </span>
+        </a>
+      </li>
+      <li>
+        <hr cDropdownDivider />
+      </li>
+      <li>
+        <h6 cDropdownHeader class="fw-semibold py-2">
+          {{ "ACCOUNT" | translate }}
+        </h6>
+      </li>
+      <li>
+        <a routerLink="/user-info" cDropdownItem>
+          <svg [cIcon]="icon.cilUser" size="lg" title="List Icon"></svg>
+          {{ "PROFILE" | translate }}
+        </a>
+      </li>
+      <li>
+        <a routerLink="/feedback-change" cDropdownItem>
+          <svg [cIcon]="icon.cilCommentBubble" size="lg" title="List Icon"></svg>
+          {{ "FEEDBACK_CHANGE" | translate }}
+        </a>
+      </li>
+      <li *ngIf="applicationType == 1 && authenType == 1">
+        <a href="javascript:void(0);" (click)="changePassword()" cDropdownItem>
+          <svg [cIcon]="icon.cilHttps" size="lg" title="List Icon"></svg>
+          {{ "CHANGEPASWORD" | translate }}
+        </a>
+      </li>
+      <li>
+        <hr cDropdownDivider />
+      </li>
+      <li>
+        <h6 cDropdownHeader class="fw-semibold py-2">
+          {{ "CONTACT_SUPPORT" | translate }}
+        </h6>
+      </li>
+      <li>
+        <a routerLink="/license" cDropdownItem>
+          <svg [cIcon]="icon.cilCheckCircle" size="lg" title="List Icon"></svg>
+          {{ "LICENSE" | translate }}
+        </a>
+      </li>
+      <li>
+        <a routerLink="/contact" cDropdownItem>
+          <svg [cIcon]="icon.cilPhone" size="lg" title="List Icon"></svg>
+          {{ "CONTACT" | translate }}
+        </a>
+      </li>
+      <li>
+        <hr cDropdownDivider />
+      </li>
+      <li>
+        <a href="javascript:void(0);" cDropdownItem (click)="doLogout()">
+          <svg [cIcon]="icon.cilAccountLogout" size="lg" title="List Icon"></svg>
+          {{ "LOGOUT" | translate }}
+        </a>
+      </li>
+      <li></li>
+    </ul>
+  </c-dropdown>
+</ng-template>
+<app-change-password #dialogChangePassword [isAdmin]="true" [isCurrentUser]="true"></app-change-password>

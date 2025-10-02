@@ -1,0 +1,8 @@
+<ng-container *ngFor="let item of listStatus">
+  <div
+    class="btn btn-sm {{ item.css }}" style="color: white; cursor: auto;  width: 130px;"
+    *ngIf="status == item.key"
+  >
+    {{ item.code | translate}}
+</div>
+</ng-container>

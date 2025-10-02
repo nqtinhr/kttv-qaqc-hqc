@@ -1,0 +1,121 @@
+.select-common{
+    position: relative;
+    .form-input{
+        display: flex;
+        border: 1px solid #b1b7c1;
+        appearance: none;
+        border-radius: 0.25rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        input{
+            border: none;
+        }
+        i{
+            color: #4c4c4c;
+            line-height: 2.2;
+            margin-right: 10px;
+        }
+    }
+}
+.multi-select{
+    position: relative;
+}
+.drop-toggle{
+    height: 38.21px !important;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 100%;
+    text-align: left;
+    min-height: 27px;
+    font-size: 16px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #212529;
+    i{
+        border: 5px solid transparent;
+        border-top-color: #1cce82;
+        margin-top: 5px;
+    }
+    &.selectactive{
+        i{
+            border-top-color: transparent;
+            border-bottom-color: #1cce82;
+            margin-top: -5px;
+        }
+    }
+    &:disabled{
+        background-color: #e9ecef;
+        opacity: 1;
+    }
+}
+.drop-show {
+    width: 100%;
+    background-color: #FFF;
+    position: absolute;
+    box-shadow: 0 6px 12px 1px rgb(0 0 0 / 36%);
+    font-size: 16px;
+    text-align: left;
+    margin-left: 1px;
+    line-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    z-index: -1;
+    visibility: hidden;
+    &.selectactive{
+        opacity: 1;
+        z-index: 100;
+        visibility: visible;
+    }
+    button{
+        padding-left: 15px !important;
+        padding: 0;
+        border:0;
+        font-weight: normal;
+        width: 100%;
+        height: 26px;
+        // line-height: 26px;
+        color: #333;
+        text-align: left;
+        outline: none;
+        cursor: pointer;
+        margin: 0;
+        &:hover, &.selectactive{
+            background: #4c7afb;
+            color: #fff;
+        }
+        &:focus{
+            background: #4c7afb;
+            outline: 0;
+            // box-shadow: inset 0 1px 1px rgb(0 0 0 / 0%), inset 0 0 0 3px rgb(0 123 255 / 25%);
+        }
+    }
+}
+.scroll-box {
+    min-width: 100%;
+    float: left;
+    overflow-y: scroll;
+    height: 300px;
+    overflow-x: hidden;
+}
+.h180{
+    max-height: 180px !important;
+}
+.h200{
+    max-height: 200px !important;
+}
+.h250{
+    max-height: 250px !important;
+}
+
+.h330{
+    max-height: 330px !important;
+}
+.max-50{
+    width: 45%;
+}
+.max-70{
+    width: 70%;
+}

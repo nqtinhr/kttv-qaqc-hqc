@@ -1,0 +1,105 @@
+<div class="container-fluid" style="margin-top: -25px;">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row" style="margin-top: 25px;">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-md-8">
+              <label class="card-tile-header">{{'STATISTICS_OF_NUMBER_RECORDS' | translate}}</label>
+            </div>
+            <div class="col-md-4">
+              <ng-select (change)="GetStatisticsNumber($event)" [(ngModel)]="Statistical" style="float: right; margin-right: 40px;" [placeholder]="translate.instant('SELECT_STATISTICAL_PERIOD')">
+                <ng-option *ngFor="let item of lstPeriod" [value]="item.key">
+                 {{ item.value | translate}}
+               </ng-option>
+            </ng-select>
+            </div>
+          </div>
+          <div class="row">
+            <canvas class="chart2" baseChart [data]="barStatisticsChartData" [options]="barChartOptions" [type]="barStatisticsChartType">
+            </canvas>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="row">
+            <div class="col-md-8">
+              <label class="card-tile-header">{{'STATISTICS_OF_NUMBER_PACKETS_ERROR' | translate}}</label>
+            </div>
+            <div class="col-md-4">
+              <ng-select (change)="GetStatisticsNumberError($event)" [(ngModel)]="StatisticalError" style="float: right; margin-right: 40px;" [placeholder]="translate.instant('SELECT_STATISTICAL_PERIOD')">
+                 <ng-option *ngFor="let item of lstPeriod" [value]="item.key">
+                  {{ item.value | translate}}
+                </ng-option>
+             </ng-select>
+            </div>
+          </div>
+          <div class="row">
+            <canvas baseChart class="chart3" [data]="barStatisticsErrorlineChartData" [options]="StatisticsErrorlineChartOptions" [type]="StatisticsErrorlineChartType"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <perfect-scrollbar style="height: 1130px;" [config]="scrollYConfig">
+        <div class="row">
+          <label class="card-tile-header">{{'CAPACITY' | translate}}</label>
+        </div>
+        <div class="row">
+          <div class="row cenrter_item">
+            <canvas baseChart class="chart" [data]="StorageChartData" [type]="StorageChartType"
+              [options]="StorageChartOptions">
+            </canvas>
+          </div>
+          <div class="row cenrter_item">
+            <div class="title_storage">
+              <label><b>{{Dashboard?.Storage.StorageUsed}}</b> {{'100_TB_USED' | translate}}</label>
+            </div>
+            <button (click)="redirectContact()" [title]="'Nâng cấp dung lượng'"
+              class="btn btn_storage">{{'UPGRADE_SPACE' | translate}}</button>
+          </div>
+        </div>
+        <div class="row cenrter_item" style="height: 650px;">
+          <div class="mar_top_15" style="display: flex; padding-top: 35px;">
+            <div style="width: 140px;">
+              <span class="card-tile-header">{{'ACCOUNT' | translate}}</span>
+            </div>
+            <div style="width: 80px;padding-top: 10px;">
+              <i class="fa fa-users"></i>
+            </div>
+          </div>
+          <div class="row user_login" style="height: 525px;">
+            <div class="row mar_top_15">
+              <div class="col-2">
+                <label class="font-bold" style="font-size: 20px;">{{Dashboard?.User.NumberUser}}</label>
+              </div>
+              <div class="col-10">
+                <label style="font-size: 20px;">{{'ACTIVE_USERS' |translate}}</label>
+              </div>
+            </div>
+            <div class="row mar_top_15 cenrter_item">
+              <div class="line-bottom-2"></div>
+            </div>
+            <perfect-scrollbar style="height: 420px;" [config]="scrollYConfig">
+              <div class="row mar_top_15" *ngFor="let item of Dashboard?.User.lstUserModel; let i = index">
+                <div class="row row_user">
+                  <div class="col-2">
+                    <c-avatar ctextcolor="primary" size="md" src="./assets/img/avatars/user.png" status="success"
+                      style="margin-top: 12px;" ng-reflect-src="./assets/img/avatars/user.png"
+                      class="avatar avatar-md rounded-1 text-primary">
+                      <img _ngcontent-lnk-c86="" class="avatar-img" src="./assets/img/avatars/user.png">
+                      <span class="avatar-status bg-success"></span>
+                    </c-avatar>
+                  </div>
+                  <div class="col-10">
+                    <label class="font-bold">{{item.UserName}}</label><br>
+                    <label class="font_small">{{item.UserPostion}}</label>
+                  </div>
+                </div>
+              </div>
+            </perfect-scrollbar>
+          </div>
+        </div>
+      </perfect-scrollbar>
+    </div>
+  </div>
+</div>

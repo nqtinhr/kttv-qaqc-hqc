@@ -1,0 +1,6 @@
+<c-container style="justify-content: normal;" [fluid]="true">
+  <a *ngIf="!until.isNullOrEmpty(navC1)" style="margin-right: 5px;text-decoration: none;color: #8a93a2;"
+    [routerLink]="['/']">{{navC1 | translate}} /</a>
+  <span *ngIf="!until.isNullOrEmpty(navC2)" style="color: #20242c;">{{navC2 | translate}}</span>
+  <span *ngIf="!until.isNullOrEmpty(navC3)" style="color: #20242c;"> / {{navC3 | translate}}</span>
+</c-container>

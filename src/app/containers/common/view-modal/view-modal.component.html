@@ -1,0 +1,43 @@
+<div bsModal #largeModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  [config]="config" aria-hidden="true">
+  <div class="modal-dialog" [class]="widthDialog" role="document">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">{{ modalTitle }}</h4>
+        <button style="border:none;background-color: #193F7D;" type="button" class="close" (click)="handleCloseDialog()"
+          [attr.aria-label]="closeButton">
+          <i style="color:white" class="fa fa-close"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <ng-content></ng-content>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark white" (click)="handleCloseDialog()" [attr.aria-label]="closeButton">
+          <i class="fa fa-close"></i>
+          {{'CLOSE' | translate}}
+        </button>
+        <ng-container *ngIf="!!submitButton">
+          <button *ngIf="submitButton != 'Lưu' && !hidedSave" type="button" class="btn btn-primary white" (click)="saveModal()"
+            [attr.aria-label]="submitButton" [disabled]="disabledSave">
+            <i class="fa fa-check-circle"></i>
+            {{ submitButton }}
+          </button>
+          <button *ngIf="submitButton === 'Lưu' && !hidedSave" type="button" class="btn btn-primary white" (click)="saveModal()"
+            [attr.aria-label]="submitButton" [disabled]="disabledSave">
+            <i class="fa fa-save"></i>
+            {{'SAVE' | translate}}
+          </button>
+          <button *ngIf="saveContinue === true" type="button" class="btn btn-primary white" (click)="saveModalContinue()"
+            [attr.aria-label]="submitButton" [disabled]="disabledSave">
+            <i class="fa fa-save"></i>
+            {{'SAVE_CONTINUE' | translate}}
+          </button>
+        </ng-container>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

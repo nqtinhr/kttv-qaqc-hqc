@@ -1,0 +1,28 @@
+<div class="select-common" (mouseleave)="showDropDown = false && outSelectValue($event)">
+    <input type="text"
+        [placeholder]="translate.instant('CATALOG_PARENT')"
+        class="drop-toggle btn flat inp-select-focus"
+        (keyup)="onKeyDownEvent($event)"
+        (click)="showDropDown=!showDropDown"
+        [ngClass]="{'selectactive': showDropDown}" 
+        [(ngModel)]="itemText" >
+    <div class="drop-show" [class]="class" [ngClass]="{'scroll-box scrollbar': lstItem?.length >=10, 'selectactive': showDropDown}">
+        <div>
+        </div>
+        <div *ngFor="let it of lstItem; index as i" >
+            <div>
+                <button  [disabled]="it.Id === catalogID" [title]="it.Name" (click)="selected(it)" (keydown)="onActionEvent($event, it)"  [ngClass]="{'selectactive': it.active, 'focus': it.focus}">
+                    {{i+1}}. {{it.Name}} 
+                    <span style="color: red" *ngIf="it.Id === catalogID"> (x)</span>
+                  </button> 
+            </div>
+            <div *ngFor="let child of it.ChildCatalog; index as j" >
+                <div>
+                    <button [disabled]="child.Id === catalogID " style="padding-left: 35px !important;" [title]="it.Name" (click)="selected(child)" (keydown)="onActionEvent($event, it)"  [ngClass]="{'selectactive': child.active, 'focus': it.focus}">
+                        {{i+1}}.{{j+1}}. {{child.Name}}
+                      </button>
+                </div>             
+            </div>
+        </div>
+    </div>
+  </div>

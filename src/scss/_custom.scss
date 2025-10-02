@@ -1,0 +1,67 @@
+// Here you can add other styles
+.navbar {
+    padding: 0px !important;
+  }
+  
+.selected-item-container{
+  margin-bottom: 2px;
+}
+  
+.selected-item{
+  min-width: 350px !important
+}
+//tree view
+ul, #myUL {
+  list-style-type: none;
+}
+
+#myUL {
+  margin: 0;
+  padding: 0;
+}
+
+.caret {
+  cursor: pointer;
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none;
+}
+
+.caret::before {
+  content: "\25B6";
+  color: black;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.caret-down::before {
+  -ms-transform: rotate(90deg); /* IE 9 */
+  -webkit-transform: rotate(90deg); /* Safari */
+  transform: rotate(90deg);  
+}
+
+.nested {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+.tree-node-content::before {
+  content: "\f07b"
+  }
+
+#treefolder .toggle-children-wrapper-expanded .toggle-children{
+  background-image: url('../assets/images/icon/filefolderopen.png') !important;
+  transform: rotate(0deg) !important;
+  width: 30px !important;
+  height: 30px !important;
+}
+
+#treefolder .toggle-children-wrapper-collapsed .toggle-children{
+  background-image: url('../assets/images/icon/filefolder.png') !important;
+  width: 30px !important;
+  height: 30px !important;
+}
