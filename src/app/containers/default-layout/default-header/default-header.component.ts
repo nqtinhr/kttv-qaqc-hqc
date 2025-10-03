@@ -8,13 +8,13 @@ import {
   ViewChild,
 } from '@angular/core';
 import { HeaderComponent } from '@coreui/angular';
-import { AuthenService } from '~/app/services/common/authen.service';
-import { ChangePasswordComponent } from '~/app/containers/common/change-password/change-password.component';
+// import { AuthenService } from '~/app/services/common/authen.service';
+// import { ChangePasswordComponent } from '~/app/containers/common/change-password/change-password.component';
 import { IconSetService } from '@coreui/icons-angular';
 import { freeSet } from '@coreui/icons/js/free';
 import { TranslateService } from '@ngx-translate/core';
 import { Utility } from '~/app/utils/utility';
-import { NavigationService } from '~/app/services/system/navigation.service';
+// import { NavigationService } from '~/app/services/system/navigation.service';
 import { LoadingService } from '~/app/services/loading/loading.service';
 import { Router } from '@angular/router';
 import SwiperCore, { Pagination, Navigation } from 'swiper';
@@ -25,7 +25,7 @@ import { IAppState } from '~/app/store/states/app.state';
 import { selectedNotification } from '~/app/store/selectors/notification.selector';
 import { notificationRouter, userRouter } from '~/app/utils/consts/router';
 import { environment } from '~/environments/environment';
-import { HttpService } from '~/app/services/common/http.service';
+// import { HttpService } from '~/app/services/common/http.service';
 import { NoticationFilter, NoticationModel } from '~/app/model/Notification';
 import { NotifierService } from 'angular-notifier';
 import {
@@ -74,9 +74,9 @@ export class DefaultHeaderComponent extends HeaderComponent {
   totalPage: number;
   totalNotView: number;
   queryObj: NoticationFilter;
-  baseURL: string = environment.APP_API_URL;
-  applicationType = AuthenService.getApplicationType();
-  authenType = AuthenService.getAuthenType();
+  // baseURL: string = environment.APP_API_URL;
+  // applicationType = AuthenService.getApplicationType();
+  // authenType = AuthenService.getAuthenType();
   navc1: any;
   @Input() sidebarId: string = 'sidebar';
   @Input() RouterParent: string;
@@ -91,29 +91,29 @@ export class DefaultHeaderComponent extends HeaderComponent {
   public newNotifications = new Array(5);
   public UserId: number;
   @ViewChild('dialogChangePassword')
-  dialogChangePassword: ChangePasswordComponent;
+  // dialogChangePassword: ChangePasswordComponent;
   itemUpdate?: NoticationModel;
   action: string;
   slidesPerViewParent = 7;
   widthNow = screen.width;
   constructor(
-    private authenService: AuthenService,
+    // private authenService: AuthenService,
     public iconSet: IconSetService,
     public translate: TranslateService,
     public ulti: Utility,
-    private service: NavigationService,
+    // private service: NavigationService,
     private loadingSrv: LoadingService,
     private until: Utility,
     private router: Router,
     private breadCumbService: BreadCumbService,
     private storeApp: Store<IAppState>,
-    private httpService: HttpService,
+    // private httpService: HttpService,
     private notifier: NotifierService,
     private localStorageService: LocalStorageService
   ) {
     super();
-    this.UserId = AuthenService.getUserId();
-    this.FullName = AuthenService.getDisplayName();
+    // this.UserId = AuthenService.getUserId();
+    // this.FullName = AuthenService.getDisplayName();
     this.icon = freeSet;
   }
   ngOnChanges(changes: SimpleChanges): void {
@@ -206,25 +206,25 @@ export class DefaultHeaderComponent extends HeaderComponent {
   }
 
   getAllNotification() {
-    let url = this.baseURL + notificationRouter.getByRoleId;
-    this.httpService.DoGet(url).subscribe((res) => {
-      if (res.Data != null) {
-        this.lstNotification = res.Data;
-        this.totalNotView = res.Data.filter((x) => x.isView == false).length;
-      }
-    });
+    // let url = this.baseURL + notificationRouter.getByRoleId;
+    // this.httpService.DoGet(url).subscribe((res) => {
+    //   if (res.Data != null) {
+    //     this.lstNotification = res.Data;
+    //     this.totalNotView = res.Data.filter((x) => x.isView == false).length;
+    //   }
+    // });
   }
 
   isViewNotification(e) {
     this.loadingSrv.setDisplay(true);
     let id = e.Id;
-    let url = this.baseURL + notificationRouter.update;
-    this.httpService.DoPost(url, { Id: id }).subscribe((res) => {
-      if (res.Data != null) {
-        this.totalNotView = res.Data;
-      }
-      this.getAllNotification();
-    });
+    // let url = this.baseURL + notificationRouter.update;
+    // this.httpService.DoPost(url, { Id: id }).subscribe((res) => {
+    //   if (res.Data != null) {
+    //     this.totalNotView = res.Data;
+    //   }
+    //   this.getAllNotification();
+    // });
     this.loadingSrv.setDisplay(false);
   }
 
@@ -238,25 +238,25 @@ export class DefaultHeaderComponent extends HeaderComponent {
       // this.UserId,
     );
     this.loadingSrv.setDisplay(true);
-    const data = this.httpService
-      .DoPost(this.baseURL + notificationRouter.getFilter, this.queryObj)
-      .toPromise()
-      .then((res: any) => {
-        this.loadingSrv.setDisplay(false);
-        this.datasource = res.Data;
-        this.totalPage = res.TotalPage;
-        this.pageNumber = res.PageNumber;
-        this.totalItems = res.TotalCount;
-        this.arrayDelete = [];
-        this.datasource.forEach((e) => {
-          if (e.isChecked) {
-            e.isChecked = false;
-          }
-        });
-      })
-      .catch((err) => {
-        this.loadingSrv.setDisplay(false);
-      });
+    // const data = this.httpService
+    //   .DoPost(this.baseURL + notificationRouter.getFilter, this.queryObj)
+    //   .toPromise()
+    //   .then((res: any) => {
+    //     this.loadingSrv.setDisplay(false);
+    //     this.datasource = res.Data;
+    //     this.totalPage = res.TotalPage;
+    //     this.pageNumber = res.PageNumber;
+    //     this.totalItems = res.TotalCount;
+    //     this.arrayDelete = [];
+    //     this.datasource.forEach((e) => {
+    //       if (e.isChecked) {
+    //         e.isChecked = false;
+    //       }
+    //     });
+    //   })
+      // .catch((err) => {
+      //   this.loadingSrv.setDisplay(false);
+      // });
   }
 
   isViewAllNotification(e) {
@@ -266,10 +266,10 @@ export class DefaultHeaderComponent extends HeaderComponent {
     } else {
       var lstid = this.lstNotification.filter((x) => x.isView == false);
       var arrId = lstid.map((e) => e.Id);
-      let url = this.baseURL + notificationRouter.updateAll;
-      this.httpService.DoPost(url, arrId).subscribe((res) => {
-        this.getAllNotification();
-      });
+      // let url = this.baseURL + notificationRouter.updateAll;
+      // this.httpService.DoPost(url, arrId).subscribe((res) => {
+      //   this.getAllNotification();
+      // });
     }
 
     this.loadingSrv.setDisplay(false);
@@ -424,15 +424,15 @@ export class DefaultHeaderComponent extends HeaderComponent {
     return -1;
   }
   public doLogout() {
-    this.authenService.doLogout();
+    // this.authenService.doLogout();
   }
   /**
    * Mở form đổi mật khẩu
    */
-  changePassword(): void {
-    if (this.UserId && this.UserId > 0)
-      this.dialogChangePassword.openDialog(this.UserId);
-  }
+  // changePassword(): void {
+  //   if (this.UserId && this.UserId > 0)
+  //     this.dialogChangePassword.openDialog(this.UserId);
+  // }
   setLanguageFromlocalStorage() {
     const strLanguageLocal = localStorage.getItem('language');
     if (this.ulti.isNullOrEmpty(strLanguageLocal)) {
@@ -456,19 +456,19 @@ export class DefaultHeaderComponent extends HeaderComponent {
     this.setslidesPerView(this.widthNow);
   }
   getNavigation(isReload = false): void {
-    this.service.getNavByUser().subscribe(
-      (res) => {
-        if (res != null) {
-          this.navItems = res.Data;
-          this.navItems = this.navItems.map((x) => {
-            x.active = false;
-            return x;
-          });
-          localStorage.setItem('navigation', JSON.stringify(this.navItems));
-        }
-      },
-      (err) => {}
-    );
+    // this.service.getNavByUser().subscribe(
+    //   (res) => {
+    //     if (res != null) {
+    //       this.navItems = res.Data;
+    //       this.navItems = this.navItems.map((x) => {
+    //         x.active = false;
+    //         return x;
+    //       });
+    //       localStorage.setItem('navigation', JSON.stringify(this.navItems));
+    //     }
+    //   },
+    //   (err) => {}
+    // );
   }
   GetnavChildren(item: any, index: number) {
     this.navc1 = item;

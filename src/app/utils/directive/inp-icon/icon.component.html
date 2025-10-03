@@ -1,5 +1,5 @@
 <ng-select [placeholder]="translate.instant(placeholder)" [(ngModel)]="classIcon" (change)="outSelectValue()"
-  [items]="lstItem" [virtualScroll]="true" bindLabel="code">
+  [items]="lstItem" bindLabel="code">
   <ng-template ng-option-tmp let-item="item" let-index="index">
     <i [class]="item.code"></i> <span *ngIf="!util.isNullOrEmpty(item.code)">:</span> {{item.code}}
   </ng-template>

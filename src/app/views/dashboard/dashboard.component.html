@@ -8,11 +8,11 @@
               <label class="card-tile-header">{{'STATISTICS_OF_NUMBER_RECORDS' | translate}}</label>
             </div>
             <div class="col-md-4">
-              <ng-select (change)="GetStatisticsNumber($event)" [(ngModel)]="Statistical" style="float: right; margin-right: 40px;" [placeholder]="translate.instant('SELECT_STATISTICAL_PERIOD')">
+              <!-- <ng-select (change)="GetStatisticsNumber($event)" [(ngModel)]="Statistical" style="float: right; margin-right: 40px;" [placeholder]="translate.instant('SELECT_STATISTICAL_PERIOD')">
                 <ng-option *ngFor="let item of lstPeriod" [value]="item.key">
                  {{ item.value | translate}}
                </ng-option>
-            </ng-select>
+            </ng-select> -->
             </div>
           </div>
           <div class="row">
@@ -26,7 +26,7 @@
               <label class="card-tile-header">{{'STATISTICS_OF_NUMBER_PACKETS_ERROR' | translate}}</label>
             </div>
             <div class="col-md-4">
-              <ng-select (change)="GetStatisticsNumberError($event)" [(ngModel)]="StatisticalError" style="float: right; margin-right: 40px;" [placeholder]="translate.instant('SELECT_STATISTICAL_PERIOD')">
+              <ng-select [(ngModel)]="StatisticalError" style="float: right; margin-right: 40px;" [placeholder]="translate.instant('SELECT_STATISTICAL_PERIOD')">
                  <ng-option *ngFor="let item of lstPeriod" [value]="item.key">
                   {{ item.value | translate}}
                 </ng-option>
@@ -54,7 +54,7 @@
             <div class="title_storage">
               <label><b>{{Dashboard?.Storage.StorageUsed}}</b> {{'100_TB_USED' | translate}}</label>
             </div>
-            <button (click)="redirectContact()" [title]="'Nâng cấp dung lượng'"
+            <button [title]="'Nâng cấp dung lượng'"
               class="btn btn_storage">{{'UPGRADE_SPACE' | translate}}</button>
           </div>
         </div>

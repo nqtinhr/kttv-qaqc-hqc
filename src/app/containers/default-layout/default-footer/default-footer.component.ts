@@ -2,7 +2,6 @@ import { environment } from '~/environments/environment';
 import { Component } from '@angular/core';
 import { FooterComponent } from '@coreui/angular';
 import { AppConfigs } from '~/app/app.config';
-import { AuthenService } from '~/app/services/common/authen.service';
 
 @Component({
   selector: 'app-default-footer',
@@ -14,7 +13,7 @@ export class DefaultFooterComponent extends FooterComponent {
   public counter: { day: number; hour: number; min: number; sec: number };
   public appTitle: string = environment.APP_TITLE;
   public yearCreate: any = 2022;
-  constructor(private authenService: AuthenService) {
+  constructor() {
     super();
     this.getWorkTime();
   }
@@ -91,7 +90,6 @@ export class DefaultFooterComponent extends FooterComponent {
         this.counter.sec === 0
       ) {
         clearInterval(intervalId);
-        this.authenService.doLogout();
       }
     }, 1000);
   }

@@ -1,6 +1,14 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  NgModule,
+  NO_ERRORS_SCHEMA,
+} from '@angular/core';
+import {
+  IconModule,
+  IconSetModule,
+  IconSetService,
+} from '@coreui/icons-angular';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
@@ -36,8 +44,13 @@ import { StoreModule } from '@ngrx/store';
 import { appReducers } from './store/reducers/app.reducers';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { RECAPTCHA_SETTINGS, RecaptchaFormsModule, RecaptchaModule, RecaptchaSettings } from 'ng-recaptcha';
-
+import {
+  RECAPTCHA_SETTINGS,
+  RecaptchaFormsModule,
+  RecaptchaModule,
+  RecaptchaSettings,
+} from 'ng-recaptcha';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 import {
   AvatarModule,
   BadgeModule,
@@ -58,17 +71,20 @@ import {
   TabsModule,
   UtilitiesModule,
   CollapseModule,
-  PaginationModule,
   SpinnerModule,
 } from '@coreui/angular';
 import { NgChartsModule } from 'ng2-charts';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { NumberOnlyDirective } from './utils/directive/number.directive';
-import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { ViewModalComponent } from './containers';
 import { BreadcrumbRouterComponent } from './containers/common/breadcrumb-router/breadcrumb-router.component';
 import { P403Component } from './views/error/p403.component';
 import { P505Component } from './views/error/p505/p505.component';
+import { SelectCommonComponent } from './utils/directive/inp-select-common/select-common.component';
+import { SelectDropdownCommonComponent } from './utils/directive/inp-select-dropdown-common/select-dropdown-common.component';
+import { ToggleButtonComponent } from './containers/common/toggle-button/toggle-button.component';
+import { IconComponent } from './utils/directive/inp-icon/icon.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -84,12 +100,16 @@ const APP_CONTAINERS = [
   declarations: [
     AppComponent,
     ...APP_CONTAINERS,
-    DashboardComponent,
     ViewModalComponent,
     NumberOnlyDirective,
     BreadcrumbRouterComponent,
     P403Component,
     P505Component,
+    IconComponent,
+    SelectCommonComponent,
+    ToggleButtonComponent,
+    SelectDropdownCommonComponent,
+    DashboardComponent
   ],
   imports: [
     FontAwesomeModule,
@@ -102,14 +122,12 @@ const APP_CONTAINERS = [
     DropdownModule,
     GridModule,
     HeaderModule,
-    SidebarModule,
     PerfectScrollbarModule,
     NavModule,
     ButtonModule,
     FormModule,
     UtilitiesModule,
     ButtonGroupModule,
-    FormsModule,
     ReactiveFormsModule,
     NgSelectModule,
     SidebarModule,
@@ -118,11 +136,10 @@ const APP_CONTAINERS = [
     ListGroupModule,
     ProgressModule,
     BadgeModule,
-    ListGroupModule,
     CardModule,
+    HttpClientModule,
     TrimValueAccessorModule,
     NotifierModule.withConfig(customNotifierOptions),
-    HttpClientModule,
     ModalModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
@@ -155,7 +172,7 @@ const APP_CONTAINERS = [
     SignaturePadModule,
     RecaptchaFormsModule,
     RecaptchaModule,
-    NgChartsModule
+    NgChartsModule,
   ],
   providers: [
     {

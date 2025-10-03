@@ -13,13 +13,15 @@ import { INavData } from '@coreui/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from '~/environments/environment';
 import { AppConfigs } from '~/app/app.config';
-import { ChangePasswordComponent } from '../common/change-password/change-password.component';
+// import { AuthenService } from '~/app/services/common/authen.service';
+// import { ChangePasswordComponent } from '../common/change-password/change-password.component';
 import 'lodash';
 import { Utility } from '~/app/utils/utility';
 import { select, Store } from '@ngrx/store';
 import { IAppState } from '~/app/store/states/app.state';
 import { selectedLoading } from '~/app/store/selectors/loading.selector';
 import { LoadingService } from '~/app/services/loading/loading.service';
+// import { NavigationService } from '~/app/services/system/navigation.service';
 import { BreadCumbService } from '~/app/services/breadcumb/breadcumb.service';
 import { LocalStorageService } from '~/app/services/common/storage-change.service';
 
@@ -54,13 +56,14 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
   pageNumber: number = 1;
   columnOrderBy: string = 'Order';
   pageSize: number = DEFAULT_PAGE_SIZE;
+  // appId: any = AuthenService.getApplicationId();
   typeOrderBy: string = 'ASC';
   lstParentName: any[] = [];
   oldData: any;
   RouParent: string = 'SYSTEM_MANAGEMENT';
   RouChilrent: string = 'VITAM';
   @ViewChild('dialogChangePassword')
-  dialogChangePassword: ChangePasswordComponent;
+  // dialogChangePassword: ChangePasswordComponent;
   showPopup = false;
   toggleMinimize(e) {
     this.minimized = e;
@@ -72,11 +75,13 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
   IsOpenNav = 0;
 
   constructor(
+    // private authenService: AuthenService,
     private breadCumbService: BreadCumbService,
     public translate: TranslateService,
     public ulti: Utility,
     private storeApp: Store<IAppState>,
     private router: Router,
+    // private service: NavigationService,
     private until: Utility,
     private localStorageService: LocalStorageService,
     private cdr: ChangeDetectorRef,
@@ -92,8 +97,21 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
       attributes: true,
       attributeFilter: ['class'],
     });
+    // if (!AuthenService.IsAuthenticated && environment.CheckAuthen) {
+    //   window.localStorage.removeItem(AppConfigs.AccessToken);
+    //   window.localStorage.removeItem(AppConfigs.InfoToken);
+    //   // window.localStorage.removeItem('applicationId');
+    //   window.localStorage.removeItem('authenType');
+    //   window.location.href = '/authenticate';
+    // }
+    // this.UserId = AuthenService.getUserId();
+    // this.UserName = AuthenService.getUserName();
+    // this.FullName = AuthenService.getDisplayName();
   }
 
+  public doLogout() {
+    // this.authenService.doLogout();
+  }
 
   async ngOnInit() {
     let init = 0;
@@ -209,19 +227,19 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
   }
 
   getNavigation(isReload = false): void {
-    this.service.getNavByUser().subscribe(
-      (res) => {
-        if (res != null) {
-          this.navItems = res.Data;
-          this.navItems = this.navItems.map((x) => {
-            x.active = false;
-            return x;
-          });
-          localStorage.setItem('navigation', JSON.stringify(this.navItems));
-        }
-      },
-      (err) => {}
-    );
+    // this.service.getNavByUser().subscribe(
+    //   (res) => {
+    //     if (res != null) {
+    //       this.navItems = res.Data;
+    //       this.navItems = this.navItems.map((x) => {
+    //         x.active = false;
+    //         return x;
+    //       });
+    //       localStorage.setItem('navigation', JSON.stringify(this.navItems));
+    //     }
+    //   },
+    //   (err) => {}
+    // );
   }
   GetParentName(data: any, isReload = false) {
     this.lstParentName = [];
@@ -381,10 +399,10 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
   /**
    * Mở form đổi mật khẩu
    */
-  changePassword(): void {
-    if (this.UserId && this.UserId > 0)
-      this.dialogChangePassword.openDialog(this.UserId);
-  }
+  // changePassword(): void {
+  //   if (this.UserId && this.UserId > 0)
+  //     this.dialogChangePassword.openDialog(this.UserId);
+  // }
   setLanguageFromlocalStorage() {
     const strLanguageLocal = localStorage.getItem('language');
     if (this.ulti.isNullOrEmpty(strLanguageLocal)) {

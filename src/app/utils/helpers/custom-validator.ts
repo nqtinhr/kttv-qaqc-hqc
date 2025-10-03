@@ -9,7 +9,7 @@ import {
 } from "@angular/forms";
 import { Observable, timer } from "rxjs";
 import { map, switchMap } from "rxjs/operators";
-import { HttpService } from "~/app/services/common/http.service";
+// import { HttpService } from "~/app/services/common/http.service";
 import { Const } from "~/app/utils/consts/const";
 import { environment } from "~/environments/environment";
 import { ObjectValidate } from "~/app/model/ObjectValidate";
@@ -17,8 +17,7 @@ import { ObjectValidate } from "~/app/model/ObjectValidate";
   providedIn: "root",
 })
 export class CustomValidator {
-  constructor(
-    private httpSV: HttpService) {}
+  constructor() {}
 
   /**
    * Trim khoảng trắng đầu cuối
@@ -37,7 +36,7 @@ export class CustomValidator {
    * @returns
    */
   public duplicate(model: ObjectValidate): AsyncValidatorFn | null {
-    return (control: AbstractControl): Observable<ValidationErrors> => {
+    return (control: AbstractControl): any => {
       var obj = {
         ...model,
         CustomData: { ...model.CustomData, Data: control.value },

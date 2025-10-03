@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DefaultLayoutComponent } from './containers';
-import { DashboardComponent } from './views/dashboard/dashboard.component';
-import { LoginErrorComponent } from './views/error/loginerror.component';
 import { P404Component } from './views/error/404.component';
 import { P405Component } from './views/error/405.component';
 import { P500Component } from './views/error/500.component';
@@ -12,15 +10,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { Right, Role } from './utils/consts/const';
 import { P505Component } from './views/error/p505/p505.component';
 import { environment } from '~/environments/environment';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
 
 export const routes: Routes = [
-  {
-    path: 'login-error',
-    component: LoginErrorComponent,
-    data: {
-      title: 'Lỗi đăng nhập',
-    },
-  },
   {
     path: '404',
     component: P404Component,
@@ -63,7 +55,6 @@ export const routes: Routes = [
       title: 'SYSTEM_MANAGEMENT',
     },
     children: [
-      { path: '', redirectTo: '/authenticate', pathMatch: 'full' },
       {
         path: 'dashboard',
         component: DashboardComponent,
