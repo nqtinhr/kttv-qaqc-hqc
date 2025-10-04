@@ -150,7 +150,7 @@ const APP_CONTAINERS = [
     }),
     IconModule,
     IconSetModule.forRoot(),
-    TreeModule,
+    // TreeModule,
     CollapseModule,
     BsDropdownModule.forRoot(),
     PaginationModule.forRoot(),

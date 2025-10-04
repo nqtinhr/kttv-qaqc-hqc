@@ -24,6 +24,7 @@ import { LoadingService } from '~/app/services/loading/loading.service';
 // import { NavigationService } from '~/app/services/system/navigation.service';
 import { BreadCumbService } from '~/app/services/breadcumb/breadcumb.service';
 import { LocalStorageService } from '~/app/services/common/storage-change.service';
+import { navItems } from './_nav';
 
 @Component({
   selector: 'app-default-layout',
@@ -227,20 +228,14 @@ export class DefaultLayoutComponent implements OnInit, OnDestroy {
   }
 
   getNavigation(isReload = false): void {
-    // this.service.getNavByUser().subscribe(
-    //   (res) => {
-    //     if (res != null) {
-    //       this.navItems = res.Data;
-    //       this.navItems = this.navItems.map((x) => {
-    //         x.active = false;
-    //         return x;
-    //       });
-    //       localStorage.setItem('navigation', JSON.stringify(this.navItems));
-    //     }
-    //   },
-    //   (err) => {}
-    // );
+    this.navItems = navItems;
+    this.navItems = this.navItems.map((x) => {
+      x.active = false;
+      return x;
+    });
+    localStorage.setItem('navigation', JSON.stringify(this.navItems));
   }
+
   GetParentName(data: any, isReload = false) {
     this.lstParentName = [];
     this.navItems = data.filter((a) =>
