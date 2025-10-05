@@ -1553,5 +1553,16 @@
   "LIST_RECORD": "Danh sách hồ sơ tạm",
   "LIST_DOCUMENT": "Danh sách văn bản tạm",
   "CONFRIM_SAVE_IMOPORT_RECORDS": "Bạn có chắc chắn lưu những bản ghi này",
-  "CONFRIM_SAVE_IMOPORT_RECORD_ALL": "Bạn có chắc chắn lưu tất cả bản ghi này"
+  "CONFRIM_SAVE_IMOPORT_RECORD_ALL": "Bạn có chắc chắn lưu tất cả bản ghi này",
+  "TEMPERATURE": "Nhiệt độ",
+  "STATION_NO": "Mã trạm",
+  "STATION_NAME": "Tên trạm",
+  "TMAX2": "TMax2",
+  "TMIN2": "TMin2",
+  "TMAX1": "TMax1",
+  "TMIN1": "TMin1",
+  "DELTA_T_6H": "ΔT 6h",
+  "MEASURE_TIME": "Thời gian đo",
+  "DATA_VALUE": "Giá trị đo (°C)",
+  "QCFLAG": "QCFlag"
 }

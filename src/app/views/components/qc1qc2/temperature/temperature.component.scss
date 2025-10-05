@@ -1,0 +1,191 @@
+@import "../../../../scss/main.scss";
+
+.no-padding {
+  padding: 0px;
+}
+
+// .table-bordered th,
+// .table-bordered td {
+//   border:  1px solid rgba(22, 42, 86, 0.15);
+//   border-top: 0;
+// }
+
+a.disabled {
+  color: gray;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+a {
+  cursor: pointer;
+}
+
+a.dropdown-item.active {
+  color: #999999;
+}
+.btn-search {
+  cursor: pointer;
+}
+.pointer {
+  cursor: pointer;
+}
+.mar-left-10{
+  margin-left: 10px;
+}
+.marg-top-20{
+  margin-top: -20px;
+}
+.mar-top-20{
+  margin-top: 20px;
+}
+.marg-top-10{
+  margin-top: -10px;
+}
+.mar-top-10{
+  margin-top: 10px;
+}
+.mar-bot-10{
+  margin-bottom: 10px;
+}
+.mar-bot-15{
+  margin-bottom: 15px;
+}
+.mar-bot-20{
+  margin-bottom: 20px;
+}
+.white{
+  color: white !important;
+}
+table{
+  border: 1px solid #d9d8d8;
+  tr{
+    td{
+      text-align: center;
+    }
+    th{
+      text-align: center;
+    }
+  }
+}
+pagination ::ng-deep ul > li:not(.active) > a {
+  color: rgb(101, 96, 96);
+}
+pagination ::ng-deep ul > li.active > a {
+  border: 1px solid #a79f9f !important;
+  background-color: #4C7DE7 !important;
+}
+
+.status-icon {
+  font-size: 18px;
+  display: inline-block;
+  text-align: center;
+}
+
+.status-ok {
+  color: #28a745; // xanh lá
+}
+
+.status-warn {
+  color: #ffc107; // vàng
+}
+
+.status-error {
+  color: #dc3545; // đỏ
+}
+
+
+// .card-header {
+//   background: $color-header-user;
+// }
+
+// .card-header h3 {
+//   color: $color-header-user-text;
+// }
+
+
+// .btn-info {
+//   background: $color-background-btn;
+// }
+
+// .btn-info:hover {
+//   background: $color-background-btn-hover;
+// }
+
+// .btn-danger {
+//   box-sizing: border-box;
+//   background: $color-delete-btn;
+// }
+
+// .table-info {
+//   background: #DEE1E4;
+//   height: 59px;
+//   box-shadow: 4px 0px 4px rgb(0 0 0 / 25%);
+//   border-radius: 5px 5px 0px 0px;
+// }
+
+// .table-bordered {
+//   box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.25);
+//   border-radius: 5px 5px 0px 0px;
+
+// }
+
+// .table-bordered th {
+//   color: #000000;
+// }
+
+// .table-info .header- {
+//   box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.25);
+//   border-radius: 5px 5px 0px 0px;
+// }
+
+// .input-group-text {
+//   background-color: rgba(70, 79, 96, 0.35);
+//   border: 	#000000;
+// }
+
+// .footer {
+//   background: #F2F2F2;
+//   border: 0.5px solid rgba(0, 0, 0, 0.3);
+//   height: 55px;
+// }
+
+// .table-info th {
+//   font-family: 'Roboto', sans-serif;
+//   font-style: normal;
+//   font-weight: 700;
+//   font-size: 16px;
+//   line-height: 35px;
+// }
+
+// table tbody tr td {
+//   font-family: 'Roboto', sans-serif;
+//   font-style: normal;
+//   font-weight: 400;
+//   font-size: 14px;
+//   line-height: 40px;
+//   color: rgba(0, 0, 0, 0.8);
+// }
+
+// .text-center input {
+//   border: 0.3px solid rgba(0, 0, 0, 0.4);
+//   box-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.25);
+//   border-radius: 1px;
+// }
+
+// .mb-4 {
+//   box-shadow: 4px 0px 4px rgb(0 0 0 / 25%);
+//   border-radius: 5px 5px 0px 0px;
+// }
+
+// .modal-header {
+//   background: #193F7D;
+//   border-radius: 5px 5px 0px 0px;
+// }
+
+// .card {
+//   border-radius: 3px;
+// }
+
+// .card-body .form-horizontal {
+//   border-radius: 3px;
+// }

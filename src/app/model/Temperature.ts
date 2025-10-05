@@ -1,27 +1,20 @@
-export class CertificateModel {
-  CertificateId: number;
-  Code: string;
-  Name: string;
-  ApplicationId?: number;
-  SerialNumber: string;
-  OwnCA: string;
-  OrganizationCA: string;
-  ValidFrom?: Date;
-  ValidTo?: Date;
-  CreatedByUserId?: number;
-  CreatedOnDate?: Date;
-  LastModifiedByUserId?: number;
-  LastModifiedOnDate?: Date;
-  Status?: number;
-  CertStatus?: number;
-  Order?: number;
-  Position: string;
-  Email: string;
-  Phone: string;
-  Contact: string;
+export class TemperatureModel {
+  StationNo: string;
+  StationNameVn: string;
+  TMax2: number;
+  TMin2: number;
+  TMax1: number;
+  TMin1: number;
+  DT6H: number;
+  DtDate: Date;
+  Value: number;
+  QCFlag: number;
 }
-export class CertificateFilter {
+
+export class TemperatureFilter {
   TextSearch: string;
+  Factor?: string;
+  DtDate?: string;
   PageSize: number;
   PageNumber: number;
   ColumnOrderBy?: string;
@@ -32,11 +25,15 @@ export class CertificateFilter {
     textSearch: string,
     pageSize: number,
     pageNumber: number,
+    factor?: string,
+    dtDate?: string,
     columnOrderBy?: string,
     typeOrderBy?: string,
     isGetCache?: boolean
   ) {
     this.TextSearch = textSearch;
+    this.Factor = factor;
+    this.DtDate = dtDate;
     this.PageSize = pageSize;
     this.PageNumber = pageNumber;
     this.ColumnOrderBy = columnOrderBy;

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { environment } from '~/environments/environment';
 import { DefaultLayoutComponent } from './containers';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { P404Component } from './views/error/404.component';
 import { P405Component } from './views/error/405.component';
 import { P500Component } from './views/error/500.component';
 import { P403Component } from './views/error/p403.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { Right, Role } from './utils/consts/const';
 import { P505Component } from './views/error/p505/p505.component';
-import { environment } from '~/environments/environment';
-import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { TemperatureComponent } from './views/components/qc1qc2/temperature/temperature.component';
 
 export const routes: Routes = [
   {
@@ -55,12 +55,33 @@ export const routes: Routes = [
       title: 'SYSTEM_MANAGEMENT',
     },
     children: [
+      { path: '', redirectTo: '/', pathMatch: 'full' },
       {
         path: 'dashboard',
         component: DashboardComponent,
         data: {
           title: environment.APP_CODE,
         },
+      },
+    ],
+  },
+  {
+    path: '',
+    component: DefaultLayoutComponent,
+    data: {
+      title: 'QUALITY_CONTROL',
+    },
+    children: [
+      {
+        path: 'qc1',
+        data: { title: 'QUALITY_QC1' },
+        children: [
+          {
+            path: 'temperature',
+            component: TemperatureComponent,
+            data: { title: 'TEMPERATURE' },
+          },
+        ],
       },
     ],
   },

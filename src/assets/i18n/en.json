@@ -1534,5 +1534,16 @@
   "SAVE_ALL_RECORD": "Save all record",
   "SAVE_ALL_DOCUMENT": "Save all docuemnt",
   "CONFRIM_SAVE_IMOPORT_RECORDS": "Are you sure you want to save the records?",
-  "CONFRIM_SAVE_IMOPORT_RECORD_ALL": "Are you sure you want to save all these records?"
+  "CONFRIM_SAVE_IMOPORT_RECORD_ALL": "Are you sure you want to save all these records?",
+  "TEMPERATURE": "Temperature",
+  "STATION_NO": "Station No",
+  "STATION_NAME": "Station Name",
+  "TMAX2": "TMax2",
+  "TMIN2": "TMin2",
+  "TMAX1": "TMax1",
+  "TMIN1": "TMin1",
+  "DELTA_T_6H": "ΔT 6h",
+  "MEASURE_TIME": "Measurement Time",
+  "DATA_VALUE": "Value (°C)",
+  "QCFLAG": "QCFlag"
 }

@@ -1,0 +1,52 @@
+# Compiled output
+/dist
+/out-tsc
+/tmp
+/build
+
+# Dependencies
+/node_modules
+/src/environments/
+
+# IDEs and editors
+.idea
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+
+# Environment variables
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Diagnostic reports (npm 7+)
+.npm
+
+# OS generated files
+.DS_Store
+.direnv
+.envrc
+.fuse_hidden*
+.localized
+.project
+.settings
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln
+*.bak
+*.vssscc
+*.vsscc
